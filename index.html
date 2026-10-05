@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mol Dakwerken | Dakdekker in Wervershoof</title>
+<meta name="description" content="Mol Dakwerken is uw dakdekker in Wervershoof. Twee dakdekkers, samen 50 jaar ervaring. Platte en hellende daken, lood- en zinkwerk, lekkage en stormschade." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   Mol Dakwerken · taste-skill redesign
+   Read: local trust-first roofing/trades landing for homeowners.
+   Dials: VARIANCE 7 · MOTION 5 · DENSITY 3.
+   System: native CSS. Type: Space Grotesk (display) + Inter (body).
+   Palette: cool off-white + off-black + burnt safety orange + zinc.
+   One theme (light). One accent. Real photography.
+   ============================================================ */
+
+:root{
+  --ink:        #151515;
+  --ink-2:      #1e1e1e;
+  --paper:      #f6f6f2;
+  --paper-2:    #ecece7;
+  --paper-3:    #e0e0d9;
+  --muted:      #6d7278;
+  --muted-2:    #9a9ea3;
+  --accent:     #ee5a24;
+  --accent-deep:#cf4a18;
+  --accent-soft:#fdeae0;
+  --line:       #e2e2dc;
+  --line-dark:  #2c2c2c;
+  --white:      #ffffff;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+  --s7:40px; --s8:48px; --s9:64px; --s10:96px;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+
+  --ease: cubic-bezier(.16,1,.3,1);
+  --maxw: 1240px;
+}
+
+*{ box-sizing:border-box; }
+html, body{ margin:0; padding:0; overflow-x:clip; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  position:relative;
+}
+/* grain: fixed, pointer-events-none only */
+body::after{
+  content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; line-height:1.02; letter-spacing:-.03em; margin:0; text-wrap:balance; }
+p{ margin:0; }
+::selection{ background:var(--accent); color:#fff; }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
+
+.wrap{ width:min(calc(100% - 2.5rem), var(--maxw)); margin:0 auto; }
+.section{ padding: var(--s10) 0; }
+
+/* accent word inside a headline: same family, color + weight */
+.mark{ color:var(--accent); }
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:var(--s2);
+  font-family:var(--font-body); font-size:15px; font-weight:600; line-height:1;
+  letter-spacing:.01em; padding:16px 26px; min-height:48px; white-space:nowrap;
+  border-radius:var(--r-sm); border:1px solid transparent;
+  cursor:pointer; text-decoration:none;
+  transition: transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.btn:active{ transform:translateY(1px); }
+.btn--primary{ background:var(--accent); color:#fff; }
+.btn--primary:hover{ background:var(--accent-deep); transform:translateY(-2px); }
+.btn--ghost{ background:transparent; color:var(--ink); border-color:var(--ink); }
+.btn--ghost:hover{ background:var(--ink); color:#fff; }
+.btn--dark{ background:var(--ink); color:#fff; }
+.btn--dark:hover{ background:#000; transform:translateY(-2px); }
+.btn .ico{ flex:0 0 auto; }
+
+/* ---------- topbar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:60;
+  background:color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar__in{ display:flex; align-items:center; justify-content:space-between; gap:var(--s4); height:72px; }
+.brand{ display:flex; align-items:center; gap:var(--s3); text-decoration:none; }
+.brand__mark{ width:11px; height:11px; background:var(--accent); border-radius:2px; flex:0 0 auto; }
+.brand__text{ display:flex; flex-direction:column; line-height:1.05; }
+.brand__name{ font-family:var(--font-display); font-size:20px; font-weight:700; letter-spacing:-.02em; color:var(--ink); }
+.brand__sub{ font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:3px; font-weight:600; }
+.nav{ display:flex; align-items:center; gap:var(--s6); }
+.nav__links{ display:flex; align-items:center; gap:var(--s6); list-style:none; margin:0; padding:0; }
+.nav__links a{
+  text-decoration:none; font-size:14.5px; font-weight:500; color:var(--ink);
+  padding:6px 0; position:relative;
+}
+.nav__links a::after{
+  content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
+  background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .22s var(--ease);
+}
+.nav__links a:hover::after{ transform:scaleX(1); }
+.topbar .btn{ padding:12px 20px; font-size:14px; min-height:44px; }
+.nav__toggle{ display:none; }
+
+/* ---------- hero: asymmetric split ---------- */
+.hero{ padding: var(--s9) 0 var(--s8); position:relative; overflow:clip; }
+.hero__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s8); align-items:center; }
+.kicker{
+  display:inline-flex; align-items:center; gap:var(--s2);
+  font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:var(--s5);
+}
+.kicker::before{ content:""; width:22px; height:2px; background:var(--accent); }
+.hero h1{ font-size:clamp(2.6rem, 6vw, 4.8rem); letter-spacing:-.04em; }
+.hero h1 .line{ display:block; }
+.hero__sub{ margin-top:var(--s5); max-width:50ch; font-size:clamp(1.02rem, 1.4vw, 1.16rem); color:var(--muted); }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:var(--s3); margin-top:var(--s7); }
+.hero__media{ position:relative; }
+.hero__media img{ width:100%; height:100%; object-fit:cover; border-radius:var(--r-lg); aspect-ratio:4/5; }
+.hero__media .frame{
+  position:absolute; top:var(--s5); right:calc(-1 * var(--s3)); width:100%; height:100%;
+  border:1px solid var(--paper-3); border-radius:var(--r-lg); z-index:-1;
+}
+
+/* ---------- stat band ---------- */
+.stats{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-2); }
+.stats__grid{ display:grid; grid-template-columns:repeat(3,1fr); }
+.stat{ padding:var(--s7) var(--s6); border-left:1px solid var(--line); }
+.stat:first-child{ border-left:0; }
+.stat b{ font-family:var(--font-display); font-size:clamp(2.2rem, 3.4vw, 3rem); font-weight:700; letter-spacing:-.03em; display:block; line-height:1; }
+.stat b .u{ color:var(--accent); font-size:.55em; font-weight:600; letter-spacing:-.02em; }
+.stat span{ display:block; margin-top:var(--s2); font-size:14px; color:var(--muted); }
+
+/* ---------- section head ---------- */
+.shead{ max-width:720px; margin-bottom:var(--s8); }
+.shead h2{ font-size:clamp(2rem, 4.2vw, 3.2rem); letter-spacing:-.04em; }
+.shead p{ margin-top:var(--s4); font-size:17px; color:var(--muted); max-width:60ch; }
+
+/* ---------- services bento ---------- */
+.bento{ display:grid; grid-template-columns:1.2fr .8fr; grid-template-rows:auto auto; gap:var(--s4); }
+.card{
+  position:relative; border-radius:var(--r-md); overflow:clip;
+  background:var(--paper-2); border:1px solid var(--line);
+  display:flex; flex-direction:column;
+  transition:transform .28s var(--ease), box-shadow .28s var(--ease);
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 24px 50px -26px rgba(21,21,21,.35); }
+.card--feature{ grid-row:span 2; }
+.card__img{ position:relative; overflow:clip; }
+.card__img img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+.card:hover .card__img img{ transform:scale(1.05); }
+.card--feature .card__img{ flex:1; }
+.card--feature .card__img img{ aspect-ratio:4/3.2; min-height:100%; }
+.card--small .card__img img{ aspect-ratio:16/9; }
+.card__body{ padding:var(--s6); display:flex; flex-direction:column; gap:var(--s3); }
+.card h3{ font-size:26px; letter-spacing:-.02em; }
+.card p{ font-size:14.5px; color:var(--muted); }
+.card__list{ list-style:none; margin:var(--s2) 0 0; padding:0; display:flex; flex-direction:column; gap:var(--s2); }
+.card__list li{ display:flex; align-items:center; gap:var(--s3); font-size:14px; color:var(--ink); }
+.card__list li::before{ content:""; width:6px; height:6px; background:var(--accent); flex:0 0 auto; }
+.card__link{ margin-top:auto; padding-top:var(--s4); }
+.card__link a{ font-size:14px; font-weight:600; color:var(--ink); text-decoration:none; display:inline-flex; align-items:center; gap:var(--s2); }
+.card__link a:hover{ color:var(--accent); }
+.card__link .arr{ transition:transform .2s var(--ease); }
+.card__link a:hover .arr{ transform:translateX(4px); }
+.card--accent{ background:var(--accent); border-color:var(--accent); }
+.card--accent h3{ color:#fff; }
+.card--accent p{ color:rgba(255,255,255,.9); }
+.card--accent .card__list li{ color:#fff; }
+.card--accent .card__list li::before{ background:#fff; }
+.card--accent .card__link a{ color:#fff; }
+
+/* ---------- about ---------- */
+.about{ background:var(--paper-2); }
+.about__grid{ display:grid; grid-template-columns:.92fr 1.08fr; gap:var(--s8); align-items:center; }
+.about__media{ position:relative; }
+.about__media img{ width:100%; border-radius:var(--r-lg); aspect-ratio:4/5; object-fit:cover; }
+.about__media .tile{
+  position:absolute; left:-12px; bottom:-12px; width:56%; height:34%;
+  background:var(--accent); border-radius:var(--r-md); z-index:-1;
+}
+.about__body h2{ font-size:clamp(1.9rem, 3.6vw, 2.8rem); letter-spacing:-.04em; }
+.about__body p{ color:var(--muted); font-size:16.5px; margin-top:var(--s5); max-width:54ch; }
+.about__body p strong{ color:var(--ink); font-weight:600; }
+.quote{
+  margin-top:var(--s7); padding-top:var(--s5); border-top:1px solid var(--line);
+  font-family:var(--font-display); font-size:clamp(1.5rem, 2.6vw, 2rem); font-weight:600; letter-spacing:-.02em; color:var(--ink);
+}
+.quote .q-mark{ color:var(--accent); }
+.quote cite{ display:block; margin-top:var(--s2); font-family:var(--font-body); font-style:normal; font-size:13px; font-weight:500; color:var(--muted); }
+
+/* ---------- marquee ---------- */
+.marquee{ background:var(--ink); color:#fff; overflow:hidden; padding:var(--s4) 0; }
+.marquee__track{ display:flex; width:max-content; animation:marquee 28s linear infinite; }
+.marquee:hover .marquee__track{ animation-play-state:paused; }
+.marquee__track span{
+  font-family:var(--font-display); font-weight:600; font-size:clamp(1.05rem, 2vw, 1.45rem);
+  letter-spacing:.02em; text-transform:uppercase; padding:0 var(--s5); white-space:nowrap;
+  display:inline-flex; align-items:center; gap:var(--s5);
+}
+.marquee__track span::after{ content:""; width:8px; height:8px; background:var(--accent); flex:0 0 auto; }
+@keyframes marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+/* ---------- projects ---------- */
+.gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s4); }
+.gallery figure{ margin:0; position:relative; border-radius:var(--r-md); overflow:clip; aspect-ratio:4/3; background:var(--paper-3); }
+.gallery img{ width:100%; height:100%; object-fit:cover; transition:transform .55s var(--ease); }
+.gallery figure:hover img{ transform:scale(1.06); }
+.gallery figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:var(--s5) var(--s4) var(--s3);
+  color:#fff; font-size:13px; font-weight:600;
+  background:linear-gradient(180deg, transparent, rgba(21,21,21,.78));
+}
+.gallery-note{ margin-top:var(--s5); font-size:13px; color:var(--muted); }
+
+/* ---------- contact ---------- */
+.contact__grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:var(--s5); align-items:start; }
+.form{ background:var(--paper-2); border:1px solid var(--line); border-radius:var(--r-md); padding:var(--s7); display:grid; gap:var(--s4); }
+.field{ display:flex; flex-direction:column; gap:var(--s2); }
+.field label{ font-size:13.5px; font-weight:600; color:var(--ink); }
+.field label .req{ color:var(--accent); }
+.field input, .field textarea{
+  font-family:var(--font-body); font-size:15px; color:var(--ink);
+  background:#fff; border:1px solid var(--paper-3); border-radius:var(--r-sm);
+  padding:14px 15px; width:100%; transition:border-color .16s var(--ease), box-shadow .16s var(--ease);
+}
+.field input:focus, .field textarea:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+.field textarea{ min-height:130px; resize:vertical; }
+.field .hint{ font-size:12.5px; color:var(--muted); }
+.form__row{ display:grid; grid-template-columns:1fr 1fr; gap:var(--s4); }
+.form__success{ display:none; background:#eef3ec; border:1px solid #d4e0d0; color:#2c4a2c; border-radius:var(--r-sm); padding:var(--s5); }
+.form__success.is-open{ display:block; }
+.file-pill{
+  display:inline-flex; align-items:center; gap:var(--s2);
+  font-size:13px; color:var(--muted); border:1px dashed var(--paper-3); border-radius:var(--r-sm);
+  padding:14px 15px; cursor:pointer; background:#fff;
+}
+.file-pill:hover{ border-color:var(--accent); color:var(--accent); }
+.file-pill input{ display:none; }
+
+.cinfo{ background:var(--ink); color:#fff; border-radius:var(--r-md); padding:var(--s7); display:flex; flex-direction:column; gap:var(--s5); }
+.cinfo h3{ font-size:20px; }
+.cinfo__item{ display:flex; flex-direction:column; gap:3px; }
+.cinfo__item .k{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); font-weight:600; }
+.cinfo__item .v{ font-size:16px; color:#fff; }
+.cinfo__item .v a{ color:var(--accent); text-decoration:none; font-weight:600; }
+.cinfo__item .v a:hover{ text-decoration:underline; }
+.cinfo .big-phone{ font-family:var(--font-display); font-size:clamp(1.5rem, 2.4vw, 2rem); font-weight:700; letter-spacing:-.02em; color:#fff; text-decoration:none; }
+.cinfo .big-phone:hover{ color:var(--accent); }
+.cinfo .divider{ height:1px; background:var(--line-dark); }
+
+/* ---------- footer ---------- */
+.footer{ background:var(--ink); color:#c8c8c2; padding:var(--s9) 0 var(--s6); }
+.footer__top{ display:flex; align-items:flex-end; justify-content:space-between; gap:var(--s6); padding-bottom:var(--s8); border-bottom:1px solid var(--line-dark); }
+.footer__logo{ font-family:var(--font-display); font-size:clamp(2.2rem, 4.6vw, 3.2rem); font-weight:700; letter-spacing:-.04em; color:#fff; line-height:.95; }
+.footer__logo span{ color:var(--accent); }
+.footer__grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:var(--s8); padding-top:var(--s8); }
+.footer h4{ font-family:var(--font-body); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.4); font-weight:600; margin:0 0 var(--s4); }
+.footer__col{ display:flex; flex-direction:column; gap:var(--s3); }
+.footer__col a, .footer__col span{ color:#c8c8c2; text-decoration:none; font-size:14.5px; }
+.footer__col a:hover{ color:#fff; }
+.footer__bottom{ margin-top:var(--s8); padding-top:var(--s5); border-top:1px solid var(--line-dark); display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--s3); font-size:12.5px; color:rgba(255,255,255,.4); }
+
+/* ---------- reveal ---------- */
+.reveal{ opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in{ opacity:1; transform:none; }
+.reveal[data-delay="1"]{ transition-delay:.08s; }
+.reveal[data-delay="2"]{ transition-delay:.16s; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .card, .card__img img, .gallery img, .btn{ transition:none; }
+  .marquee__track{ animation:none; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1020px){
+  .hero__grid{ grid-template-columns:1fr; gap:var(--s6); }
+  .hero__media{ max-width:460px; }
+  .bento{ grid-template-columns:1fr; }
+  .card--feature{ grid-row:auto; }
+  .card--feature .card__img img{ aspect-ratio:16/10; min-height:auto; }
+  .about__grid, .contact__grid{ grid-template-columns:1fr; gap:var(--s6); }
+  .about__media{ max-width:520px; }
+  .gallery{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width: 768px){
+  .nav__links{ display:none; position:absolute; top:72px; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; background:var(--paper); border-bottom:1px solid var(--line); padding:var(--s3) var(--s5) var(--s5); }
+  .nav__links.is-open{ display:flex; }
+  .nav__links li{ border-bottom:1px solid var(--line); }
+  .nav__links li:last-child{ border-bottom:0; }
+  .nav__links a{ display:block; padding:var(--s4) 0; font-size:16px; }
+  .nav__toggle{ display:inline-flex; }
+  .stats__grid{ grid-template-columns:1fr; }
+  .stat{ border-left:0; border-top:1px solid var(--line); }
+  .stat:first-child{ border-top:0; }
+  .footer__grid{ grid-template-columns:1fr; gap:var(--s6); }
+  .footer__top{ flex-direction:column; align-items:flex-start; }
+}
+@media (max-width: 520px){
+  .gallery{ grid-template-columns:1fr; }
+  .form__row{ grid-template-columns:1fr; }
+  .form, .cinfo{ padding:var(--s5); }
+  .hero h1{ font-size:clamp(2.2rem, 9.5vw, 2.9rem); }
+  .hero__cta .btn{ width:100%; }
+  .section{ padding:var(--s8) 0; }
+  .topbar .btn--phone span{ display:none; }
+  .topbar .btn--phone::before{ content:"Bellen"; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="topbar" id="top">
+  <div class="wrap topbar__in">
+    <a class="brand" href="#top">
+      <span class="brand__mark"></span>
+      <span class="brand__text">
+        <span class="brand__name">Mol Dakwerken</span>
+        <span class="brand__sub">Dakdekkers in Wervershoof</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#projecten">Projecten</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary btn--phone" href="tel:+31658924404">
+        <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Bel direct</span>
+      </a>
+      <button class="btn btn--ghost nav__toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <span class="kicker">Dakdekkersbedrijf in Wervershoof</span>
+        <h1>
+          <span class="line">Dakdekker in Wervershoof.</span>
+          <span class="line"><span class="mark">Waterdicht</span> vakwerk.</span>
+        </h1>
+        <p class="hero__sub">Twee dakdekkers, samen 50 jaar ervaring. Van spoedreparatie tot specialistisch zinkwerk, altijd strak opgeleverd.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="tel:+31658924404">
+            <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Bel direct
+          </a>
+          <a class="btn btn--ghost" href="#contact">Offerte aanvragen</a>
+        </div>
+      </div>
+      <div class="hero__media reveal">
+        <span class="frame" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=1100&q=80" alt="Dakdekker aan het werk op een dak" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats" aria-label="Kerncijfers">
+    <div class="wrap stats__grid">
+      <div class="stat reveal"><b>50<span class="u"> jaar</span></b><span>ervaring in het dakvak</span></div>
+      <div class="stat reveal" data-delay="1"><b>West-Friesland</b><span>lokaal en betrouwbaar</span></div>
+      <div class="stat reveal" data-delay="2"><b>Allround</b><span>spoed, renovatie en zinkwerk</span></div>
+    </div>
+  </section>
+
+  <!-- ============ DIENSTEN ============ -->
+  <section class="section" id="diensten">
+    <div class="wrap">
+      <div class="shead reveal">
+        <h2>Wat we doen</h2>
+        <p>Van spoedklus tot specialistisch ambacht. Platte en hellende daken, lood- en zinkwerk, en alles voor een waterdicht resultaat.</p>
+      </div>
+      <div class="bento">
+        <article class="card card--feature reveal">
+          <div class="card__img"><img src="https://images.unsplash.com/photo-1605450099279-533bd3ce379a?auto=format&fit=crop&w=1200&q=80" alt="Dakpannen op een hellend dak" loading="lazy" /></div>
+          <div class="card__body">
+            <h3>Platte en hellende daken</h3>
+            <p>Nieuwbouw en renovatie, van dakleer tot dakpannen, strak en duurzaam opgeleverd.</p>
+            <ul class="card__list">
+              <li>Bitumineuze dakbedekking</li>
+              <li>Kunststof dakbedekking</li>
+              <li>Witte reflecterende daken</li>
+              <li>Pannendaken en dakisolatie</li>
+            </ul>
+            <div class="card__link"><a href="#contact">Offerte aanvragen <span class="arr">→</span></a></div>
+          </div>
+        </article>
+
+        <article class="card card--small reveal" data-delay="1">
+          <div class="card__img"><img src="https://images.unsplash.com/photo-1518736346281-76873166a64a?auto=format&fit=crop&w=900&q=80" alt="Strak afgewerkt zinken dak" loading="lazy" /></div>
+          <div class="card__body">
+            <h3>Lood- en zinkwerk</h3>
+            <p>Het ambachtelijke werk. Zinken dakgoten, afvoerpijpen en kilgoten op maat, plus loodslabben bij schoorstenen en dakkapellen.</p>
+            <div class="card__link"><a href="#contact">Offerte aanvragen <span class="arr">→</span></a></div>
+          </div>
+        </article>
+
+        <article class="card card--accent card--small reveal" data-delay="2">
+          <div class="card__body">
+            <h3>Lekkage en stormschade</h3>
+            <p>Bij lekkage of stormschade zijn we snel ter plaatse om gevolgschade te beperken.</p>
+            <ul class="card__list">
+              <li>Snel ter plaatse bij lekkage</li>
+              <li>Beoordeling van stormschade</li>
+            </ul>
+            <div class="card__link"><a href="tel:+31658924404">Bel direct <span class="arr">→</span></a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OVER ONS ============ -->
+  <section class="section about" id="over-ons">
+    <div class="wrap about__grid">
+      <div class="about__media reveal">
+        <span class="tile" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1635424709961-f3a150459ad4?auto=format&fit=crop&w=1100&q=80" alt="Twee dakdekkers aan het werk op een dak" loading="lazy" />
+      </div>
+      <div class="about__body reveal" data-delay="1">
+        <h2>Twee dakdekkers, één belofte</h2>
+        <p><strong>Mol Dakwerken</strong> is het bedrijf van Iwan Mol, gevestigd in Wervershoof. Samen brengen we ruim 50 jaar ervaring in het dakvak mee, met passie voor het ambacht.</p>
+        <p>We geloven in de nuchtere Noord-Hollandse aanpak: afspraak is afspraak, en een dak hoort simpelweg waterdicht opgeleverd te worden. Geen dure verhalen, gewoon goed werk.</p>
+        <div class="quote">
+          <span class="q-mark">"</span>Afspraak is afspraak.<span class="q-mark">"</span>
+          <cite>Iwan Mol, Mol Dakwerken</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Platte daken</span>
+      <span>Hellende daken</span>
+      <span>Lood- en zinkwerk</span>
+      <span>Lekkage en stormschade</span>
+      <span>Dakisolatie</span>
+      <span>Pannendaken</span>
+      <span>Platte daken</span>
+      <span>Hellende daken</span>
+      <span>Lood- en zinkwerk</span>
+      <span>Lekkage en stormschade</span>
+      <span>Dakisolatie</span>
+      <span>Pannendaken</span>
+    </div>
+  </div>
+
+  <!-- ============ PROJECTEN ============ -->
+  <section class="section" id="projecten">
+    <div class="wrap">
+      <div class="shead reveal">
+        <h2>Recent werk</h2>
+        <p>Een greep uit opgeleverde daken en zinkwerk. Dit zijn voorbeeldbeelden, Iwan vervangt ze door eigen voor-en-na foto's.</p>
+      </div>
+      <div class="gallery">
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1635424709845-3a85ad5e1f5e?auto=format&fit=crop&w=900&q=80" alt="Dakdekkers op een dak" loading="lazy" /><figcaption>Renovatie, Wervershoof</figcaption></figure>
+        <figure class="reveal" data-delay="1"><img src="https://images.unsplash.com/photo-1643225523483-e2c434191bba?auto=format&fit=crop&w=900&q=80" alt="Dakdekker draagt dakpannen" loading="lazy" /><figcaption>Pannendak, West-Friesland</figcaption></figure>
+        <figure class="reveal" data-delay="2"><img src="https://images.unsplash.com/photo-1726589004565-bedfba94d3a2?auto=format&fit=crop&w=900&q=80" alt="Dakdekker werkt op een dak" loading="lazy" /><figcaption>Dakonderhoud, Noord-Holland</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1590365876016-da05ac533e83?auto=format&fit=crop&w=900&q=80" alt="Woning met dakraam" loading="lazy" /><figcaption>Dakkapel, Wervershoof</figcaption></figure>
+        <figure class="reveal" data-delay="1"><img src="https://images.unsplash.com/photo-1673645652590-9d21295bf4ac?auto=format&fit=crop&w=900&q=80" alt="Detail van dakbedekking" loading="lazy" /><figcaption>Plat dak, West-Friesland</figcaption></figure>
+        <figure class="reveal" data-delay="2"><img src="https://images.unsplash.com/photo-1643509867448-57001e0c333d?auto=format&fit=crop&w=900&q=80" alt="Vakman aan het werk in de werkplaats" loading="lazy" /><figcaption>Zinkwerk, Noord-Holland</figcaption></figure>
+      </div>
+      <p class="gallery-note">Deze voorbeeldbeelden vervangen we graag door foto's van echt opgeleverd werk.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / OFFERTE ============ -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="shead reveal">
+        <h2>Gratis offerte aanvragen</h2>
+        <p>Vertel wat er speelt en stuur gerust een foto van uw dak of lekkage mee. We reageren snel.</p>
+      </div>
+      <div class="contact__grid">
+        <!-- Form: front-end only. Koppel aan Formspree, Netlify Forms of eigen backend. -->
+        <form class="form reveal" id="offerteForm" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="naam">Naam <span class="req">*</span></label>
+              <input type="text" id="naam" name="naam" autocomplete="name" required placeholder="Uw naam" />
+            </div>
+            <div class="field">
+              <label for="telefoon">Telefoon <span class="req">*</span></label>
+              <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" required placeholder="06 1234 5678" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" />
+          </div>
+          <div class="field">
+            <label for="bericht">Waar kunnen we mee helpen? <span class="req">*</span></label>
+            <textarea id="bericht" name="bericht" required placeholder="Bijvoorbeeld lekkage aan de dakgoot, nieuwe dakbedekking of stormschade"></textarea>
+          </div>
+          <div class="field">
+            <label class="file-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+              Foto van uw dak toevoegen (optioneel)
+              <input type="file" name="foto" accept="image/*" />
+            </label>
+            <span class="hint">Een foto helpt ons sneller inschatten wat er nodig is.</span>
+          </div>
+          <button type="submit" class="btn btn--dark">Offerte aanvragen</button>
+          <div class="form__success" id="formSuccess" role="status">
+            Bedankt, uw aanvraag is ontvangen. We nemen zo snel mogelijk contact op. Spoed? Bel <a href="tel:+31658924404" style="font-weight:600;color:inherit">06 589 244 04</a>.
+          </div>
+        </form>
+
+        <aside class="cinfo reveal" data-delay="1">
+          <h3>Rechtstreeks contact</h3>
+          <div class="cinfo__item">
+            <span class="k">Bel direct bij spoed</span>
+            <a class="big-phone" href="tel:+31658924404">06 589 244 04</a>
+          </div>
+          <div class="cinfo__item">
+            <span class="k">Telefoon</span>
+            <span class="v"><a href="tel:+31610415588">06 104 155 88</a></span>
+          </div>
+          <div class="divider"></div>
+          <div class="cinfo__item">
+            <span class="k">Adres</span>
+            <span class="v">Bogertje 22<br />1693 KH Wervershoof</span>
+          </div>
+          <div class="cinfo__item">
+            <span class="k">KvK-nummer</span>
+            <span class="v">88291065</span>
+          </div>
+          <div class="divider"></div>
+          <div class="cinfo__item">
+            <span class="k">Werkgebied</span>
+            <span class="v">Wervershoof, West-Friesland en Noord-Holland</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__logo">Mol <span>Dakwerken</span></div>
+      <a class="btn btn--primary" href="tel:+31658924404">
+        <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Bel direct
+      </a>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h4>Mol Dakwerken</h4>
+        <p style="color:#9a9a94; font-size:14.5px; max-width:36ch; margin:0;">Dakdekkersbedrijf in Wervershoof en omstreken. Samen 50 jaar ervaring, van spoedklus tot specialistisch zinkwerk.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navigatie</h4>
+        <a href="#diensten">Diensten</a>
+        <a href="#over-ons">Over ons</a>
+        <a href="#projecten">Projecten</a>
+        <a href="#contact">Contact en offerte</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="tel:+31658924404">06 589 244 04</a>
+        <a href="tel:+31610415588">06 104 155 88</a>
+        <span>Bogertje 22, 1693 KH Wervershoof</span>
+        <span>KvK 88291065</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Mol Dakwerken, Wervershoof</span>
+      <span>Dakdekker Wervershoof, Dakwerken West-Friesland, Zinkwerk Noord-Holland</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var topbar = document.querySelector('.topbar');
+  var onScroll = function(){ topbar.classList.toggle('is-scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ links.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); }
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  var form = document.getElementById('offerteForm');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    success.classList.add('is-open');
+    form.querySelector('button[type="submit"]').disabled = true;
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+</body>
+</html>
