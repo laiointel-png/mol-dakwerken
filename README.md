@@ -1,6 +1,6 @@
-# Mol Dakwerken
+# Iwan Mol Dak en Zinkwerk
 
-Website voor Mol Dakwerken, dakdekkersbedrijf in Wervershoof (Noord-Holland).
+Website voor Iwan Mol Dak en Zinkwerk, dakdekkersbedrijf in Wervershoof (Noord-Holland).
 
 Eigenaar: Iwan Mol · Bogertje 22, 1693 KH Wervershoof · KvK 88291065
 
